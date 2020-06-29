@@ -1,0 +1,26 @@
+{
+	"name": "vite-study",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/18zili/vite-study.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/18zili/vite-study/issues"
+	},
+	"homepage": "https://github.com/18zili/vite-study#readme",
+	"dependencies": {
+		"@vue/compiler-dom": "^3.0.0-beta.15",
+		"@vue/compiler-sfc": "^3.0.0-beta.15",
+		"koa": "^2.13.0",
+		"vue": "^3.0.0-beta.14"
+	}
+}
