@@ -75,14 +75,13 @@ function scriptActionJs(ctx, url, query) {
   ctx.body = rewriteImport(content);
 }
 
-// script: vue
+// script: vue单文件组件
 function scriptActionVue(ctx, url, query) {
-  // 解析单文件组件
   const p = path.resolve(__dirname, url.split("?")[0].slice(1));
   const { descriptor } = compilerSfc.parse(fs.readFileSync(p, "utf-8"));
 
+  // 这是script
   if (!query.type) {
-    // 这是script
     ctx.type = "application/javascript";
     ctx.body = `
       // 拿到 script 的内容
@@ -104,8 +103,8 @@ function scriptActionVue(ctx, url, query) {
     `;
   }
 
+  // 处理template
   if (query.type == "template") {
-    // template模板
     const template = descriptor.template;
     // 在服务端编译 template 并且返回
     const render = compilerDom.compile(template.content, {
@@ -116,6 +115,7 @@ function scriptActionVue(ctx, url, query) {
     ctx.body = rewriteImport(render);
   }
 
+  // 处理style
   if (query.type === "style") {
     const styleBlock = descriptor.styles[0];
     ctx.type = "application/javascript";
